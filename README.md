@@ -311,7 +311,7 @@ If you find this template useful, you may cite or mention it as:
   author       = {Your Name},
   title        = {AuroraTeX: A Modern LaTeX Report Template},
   year         = {2026},
-  howpublished = {\url{https://github.com/your-username/AuroraTeX}}
+  howpublished = {\url{https://github.com/JackXing875/AuroraTeX}}
 }
 ```
 
