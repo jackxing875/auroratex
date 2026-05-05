@@ -9,7 +9,32 @@ It provides a polished chapter style, clean section hierarchy, comfortable page 
 Whether you are writing a course report, lab report, technical note, reading summary, or small research document, AuroraTeX gives you a beautiful starting point.
 
 ---
+## Preview
 
+<!-- Add screenshots here after compiling the demo document. -->
+
+<table>
+  <tr>
+    <td width="50%" style="padding-right: 10px;">
+      <img src="preview/preview1.png" width="100%">
+    </td>
+    <td width="50%" style="padding-left: 10px;">
+      <img src="preview/preview2.png" width="100%">
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="50%" style="padding-right: 10px;">
+      <img src="preview/preview3.png" width="100%">
+    </td>
+    <td width="50%" style="padding-left: 10px;">
+      <img src="preview/preview4.png" width="100%">
+    </td>
+  </tr>
+</table>
+---
 
 ## Features
 
@@ -21,6 +46,8 @@ Whether you are writing a course report, lab report, technical note, reading sum
 - Highlighted note/warning boxes
 - Equation, theorem, definition, and example environments
 - Code block support
+- Per-chapter local contents with `\Chapter{...}`
+- PGFPlots defaults for clean 2D and 3D figures
 - Easy color and layout customization
 - Suitable for both academic and technical writing
 
@@ -57,9 +84,15 @@ Recommended compiler:
 
 ```text
 XeLaTeX
-````
+```
 
-If you do not use Chinese characters or custom fonts, `pdfLaTeX` may also work depending on your configuration.
+If you write Chinese content, use the class option:
+
+```latex
+\documentclass[chinese]{AuroraTeX}
+```
+
+For English-only documents, `pdfLaTeX` may also work depending on your configuration.
 
 ---
 
@@ -71,6 +104,12 @@ For Linux/macOS:
 
 ```bash
 latexmk -xelatex main.tex
+```
+
+Or use the included make target:
+
+```bash
+make pdf
 ```
 
 For Windows, you can use TeX Live, MiKTeX, or compile directly through VS Code with the LaTeX Workshop extension.
@@ -85,13 +124,21 @@ AuroraTeX/
 ├── AuroraTeX.cls         # Template class file
 ├── references.bib        # Bibliography file
 ├── figures/              # Images and figures
-├── assets/               # README preview images
+├── preview/              # Reference screenshots for the intended style
 ├── sections/             # Chapter or section files
 │   ├── introduction.tex
-│   ├── formatting.tex
-│   └── examples.tex
+│   └── plotting.tex
+├── latexmkrc             # latexmk defaults
+├── Makefile              # Convenience build targets
 └── README.md
 ```
+
+---
+
+## Documentation
+
+For detailed usage guides, customization tutorials, and command reference,
+see the [`docs/`](docs/) directory.
 
 ---
 
@@ -103,15 +150,20 @@ A minimal document looks like this:
 \documentclass{AuroraTeX}
 
 \title{AuroraTeX Template}
+\subtitle{Report and Documentation Template}
 \author{Your Name}
-\date{\today}
+\email{your.name@example.edu}
+\studentname{Your Name}
+\studentnumber{20260000}
+\modulename{Course or Project Name}
+\date{}
 
 \begin{document}
 
 \maketitle
 \tableofcontents
 
-\chapter{Introduction}
+\Chapter{Introduction}
 
 This is a simple example of an AuroraTeX document.
 
@@ -199,6 +251,8 @@ This is a note box. You can use it to emphasize important ideas.
 This is a warning box. You can use it for common mistakes or important reminders.
 \end{warning}
 ```
+
+The class also provides `excerpt`, `example`, and `highlight` boxes.
 
 ---
 
@@ -314,4 +368,3 @@ If you find this template useful, you may cite or mention it as:
   howpublished = {\url{https://github.com/JackXing875/AuroraTeX}}
 }
 ```
-

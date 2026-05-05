@@ -1,0 +1,60 @@
+% ===========================================================================
+%  main.tex — AuroraTeX example document
+% ===========================================================================
+%  This file is the entry point of your report.  It sets document metadata,
+%  produces the title page and table of contents, and includes the individual
+%  chapter/section files from the `sections/` directory.
+%
+%  Build command (requires latexmk + XeLaTeX):
+%    make pdf            # or: latexmk -xelatex main.tex
+%
+%  To start your own document, copy this file and edit the fields below.
+% ===========================================================================
+
+\documentclass{AuroraTeX}
+%  Class options (add before the closing brace):
+%    chinese  — enable Chinese typesetting via ctex (requires XeLaTeX/LuaLaTeX)
+
+% ---------------------------------------------------------------------------
+%  Metadata — edit these for your own report
+% ---------------------------------------------------------------------------
+%  Required fields:  \title, \author
+%  Optional fields:  \subtitle, \email, \date, \studentname, \studentnumber,
+%                    \modulename, \institution
+%  Empty optional fields are omitted from the title page automatically.
+% ---------------------------------------------------------------------------
+\title{AuroraTeX}
+\subtitle{Report and Documentation Template}
+\author{Your Name}
+\email{your.name@example.edu}
+\studentname{Your Name}
+\studentnumber{20260000}
+\modulename{Course or Project Name}
+\date{}
+
+\begin{document}
+
+% --- Title page ------------------------------------------------------------
+\maketitle
+
+% --- Table of contents (global) --------------------------------------------
+\tableofcontents
+\clearpage
+
+% --- Chapters --------------------------------------------------------------
+%  Each chapter is stored in a separate .tex file under sections/.
+%  Add new chapters by creating a new file and adding \input{sections/...}.
+% ---------------------------------------------------------------------------
+\input{sections/introduction}
+\input{sections/plotting}
+
+% --- Bibliography ----------------------------------------------------------
+%  \nocite{*} includes every entry in references.bib even if not cited.
+%  Replace plainnat with your preferred natbib style (e.g. unsrtnat, abbrvnat).
+% ---------------------------------------------------------------------------
+\clearpage
+\nocite{auroratex,pgfplots}
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
